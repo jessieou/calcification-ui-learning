@@ -231,32 +231,6 @@ def thank_you_page():
 # -----------------------------
 # Main App UI Components
 # -----------------------------
-NavButton = dbc.Container(
-    dbc.Row(
-        dbc.Col(
-            dbc.Button(
-                "Submit & Next",
-                id="submit-button",
-                class_name='w-50',
-                n_clicks=0,
-                style={
-                    'font-size': '26px',
-                    'margin-top': '20px',
-                    'margin-bottom': '10px',
-                    'margin-left': '810px',
-                    'width': '60%',
-                    'background-color': 'black',   # background is white
-                    'color': 'white',              # text is black
-                    'border': '2px solid white'    # optional: adds a visible black border
-                }
-            ),
-            width=4
-        ),
-        justify="center",
-    ),
-    fluid=False
-)
-
 # The feedback modal
 feedback_modal = dbc.Modal(
     [
@@ -287,7 +261,7 @@ feedback_modal = dbc.Modal(
 # Interval for auto-close after 3 seconds
 auto_close_interval = dcc.Interval(
     id='auto-close-interval',
-    interval=4000,   # 3 seconds
+    interval=2000,   # 3 seconds
     n_intervals=0,
     disabled=True,
     max_intervals=1  # fire once each time it's enabled
@@ -426,6 +400,20 @@ def build_main_layout(start_case_id):
                         value=None,
                         tooltip={"placement": "bottom", "always_visible": True},
                     ),
+                    html.Br(),
+                    dbc.Button(
+                        "Submit & Next",
+                        id="submit-button",
+                        n_clicks=0,
+                        style={
+                            "font-size": "26px",
+                            "marginTop": "20px",
+                            "width": "100%",
+                            "background-color": "black",
+                            "color": "white",
+                            "border": "2px solid white",
+                        },
+                    ),
                 ]
             )
         ],
@@ -461,11 +449,6 @@ def build_main_layout(start_case_id):
                             dbc.Col(info_card, width=4),
                         ],
                         justify="between",
-                    ),
-                    dbc.Row(
-                        dbc.Col(NavButton, width=12),
-                        justify="center",
-                        className="mt-4",
                     ),
                     hidden_case_id,
                     dcc.Store(id="previous-case-id", data=str(start_case_id)),
