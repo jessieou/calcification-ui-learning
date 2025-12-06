@@ -352,7 +352,7 @@ def build_main_layout(start_case_id):
                         style={"font-size": "30px", "color": "white"},
                     ),
                     html.P(
-                        f"Calcification longest span: {row['calcification_span']}",
+                        f"Calcification longest span (mm): {row['calcification_span']}",
                         id="calc-span-label",
                         style={"font-size": "30px", "color": "white"},
                     ),
